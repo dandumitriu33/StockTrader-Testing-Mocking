@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace stock_trader_app_DI_csharp.StockTrader
 {
-    interface ITrader
+    public interface ITrader
     {
         bool Buy(string symbol, double bid);
     }

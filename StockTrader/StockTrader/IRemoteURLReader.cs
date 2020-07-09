@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace stock_trader_app_DI_csharp.StockTrader
 {
-    interface IRemoteURLReader
+    public interface IRemoteURLReader
     {
         string ReadFromUrl(string endpoint);
     }

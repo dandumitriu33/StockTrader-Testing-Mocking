@@ -5,24 +5,22 @@ namespace stockTrader
     public class Trader : ITrader
     {
         private Trader _instance;
-
+        IStockAPIService _stockAPIService;
+        
+        public Trader(IStockAPIService stockAPIService)
+        {
+            _stockAPIService = stockAPIService;
+        }
         public Trader Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new Trader();
+                    _instance = new Trader(_stockAPIService);
                 }
                 return _instance;
             }
-        }
-
-        private readonly IStockAPIService _stockApiService;
-
-        public Trader()
-        {
-            _stockApiService = new StockAPIService();
         }
         
         /// <summary>
@@ -33,11 +31,11 @@ namespace stockTrader
         /// <returns>whether any stock was bought</returns>
         public bool Buy(string symbol, double bid) 
         {
-            double price = _stockApiService.GetPrice(symbol);
+            double price = _stockAPIService.GetPrice(symbol);
             bool result;
             if (price <= bid) {
                 result = true;
-                _stockApiService.Buy(symbol);
+                _stockAPIService.Buy(symbol);
                 Logger.Instance.Log("Purchased " + symbol + " stock at $" + bid + ", since its higher that the current price ($" + price + ")");
             }
             else {
