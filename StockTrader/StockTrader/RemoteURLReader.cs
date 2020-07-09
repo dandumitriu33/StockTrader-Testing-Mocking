@@ -1,8 +1,9 @@
+using stock_trader_app_DI_csharp.StockTrader;
 using System.Net;
 
 namespace stockTrader
 {
-    public class RemoteURLReader
+    public class RemoteURLReader : IRemoteURLReader
     {
         private RemoteURLReader _instance;
 

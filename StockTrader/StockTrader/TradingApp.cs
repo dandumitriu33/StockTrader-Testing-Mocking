@@ -1,4 +1,5 @@
-﻿using System;
+﻿using stock_trader_app_DI_csharp.StockTrader;
+using System;
 
 namespace stockTrader
 {
@@ -7,13 +8,13 @@ namespace stockTrader
   {
     public static void Main(string[] args)
     {
-		Trader traderDI = new Trader();
+		ITrader traderDI = new Trader();
 	    TradingApp app = new TradingApp(traderDI);
 	    app.Start();
     }
-		private readonly Trader _trader;
+		private readonly ITrader _trader;
 
-        public TradingApp(Trader trader)
+        public TradingApp(ITrader trader)
         {
             _trader = trader;
         }

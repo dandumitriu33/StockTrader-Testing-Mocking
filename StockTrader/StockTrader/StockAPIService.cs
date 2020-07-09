@@ -19,7 +19,7 @@ namespace stockTrader
         /// <returns>the stock price</returns>
         public double GetPrice(string symbol) {
             //string url = String.Format(apiPath, symbol);
-            RemoteURLReader reader = new RemoteURLReader();
+            IRemoteURLReader reader = new RemoteURLReader();
             string url = $"{apiPath}{symbol.ToUpper()}?apikey=demo";
             string result = reader.ReadFromUrl(url);
             var json = JObject.Parse(result);
