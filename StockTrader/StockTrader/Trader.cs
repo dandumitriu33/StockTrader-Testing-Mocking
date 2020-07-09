@@ -18,7 +18,7 @@ namespace stockTrader
             }
         }
 
-        private readonly StockAPIService _stockApiService;
+        private readonly IStockAPIService _stockApiService;
 
         public Trader()
         {

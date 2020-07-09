@@ -25,14 +25,14 @@ namespace stockTrader
             var json = JObject.Parse(result);
             string price = json.GetValue("price").ToString();
             return double.Parse(price);
-    }
+        }
 	
-    /// <summary>
-    /// Buys a share of the given stock at the current price. Returns false if the purchase fails 
-    /// </summary>
-    public bool Buy(string symbol) {
-        // Stub. No need to implement this.
-        return true;
+        /// <summary>
+        /// Buys a share of the given stock at the current price. Returns false if the purchase fails 
+        /// </summary>
+        public bool Buy(string symbol) {
+            // Stub. No need to implement this.
+            return true;
+        }
     }
-}
 }

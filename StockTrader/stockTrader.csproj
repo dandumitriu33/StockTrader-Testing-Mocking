@@ -47,7 +47,7 @@
     <Compile Include="StockTrader\ITrader.cs" />
     <Compile Include="StockTrader\Logger.cs" />
     <Compile Include="StockTrader\MockRemoteURLReader.cs" />
-    <Compile Include="StockTrader\MockStockApiService.cs" />
+    <Compile Include="StockTrader\MockStockAPIService.cs" />
     <Compile Include="StockTrader\MockTrader.cs" />
     <Compile Include="StockTrader\RemoteURLReader.cs" />
     <Compile Include="StockTrader\StockAPIService.cs" />
