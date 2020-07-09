@@ -10,7 +10,17 @@ namespace stock_trader_app_DI_csharp.StockTrader
     {
         public bool Buy(string symbol, double bid)
         {
-            return true;
+            double price = 400.25;
+            bool result;
+            if (price <= bid)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }
