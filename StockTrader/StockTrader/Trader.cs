@@ -1,10 +1,12 @@
+using stock_trader_app_DI_csharp.StockTrader;
+
 namespace stockTrader
 {
-    public class Trader
+    public class Trader : ITrader
     {
-        private static Trader _instance;
+        private Trader _instance;
 
-        public static Trader Instance
+        public Trader Instance
         {
             get
             {

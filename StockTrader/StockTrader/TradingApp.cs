@@ -7,11 +7,18 @@ namespace stockTrader
   {
     public static void Main(string[] args)
     {
-	    TradingApp app = new TradingApp();
+		Trader traderDI = new Trader();
+	    TradingApp app = new TradingApp(traderDI);
 	    app.Start();
     }
+		private readonly Trader _trader;
 
-    public void Start()
+        public TradingApp(Trader trader)
+        {
+            _trader = trader;
+        }
+
+        public void Start()
     {
 	    Console.WriteLine("Enter a stock symbol (for example aapl):");
 	    string symbol = Console.ReadLine();
@@ -23,7 +30,7 @@ namespace stockTrader
 	    }
 	    
 	    try {
-		    bool purchased = Trader.Instance.Buy(symbol, price);
+		    bool purchased = _trader.Buy(symbol, price);
 		    if (purchased) {
 			    Logger.Instance.Log("Purchased stock!");
 		    }

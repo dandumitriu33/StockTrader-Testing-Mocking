@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using NSubstitute;
 
 namespace stockTrader
 {
@@ -7,6 +8,7 @@ namespace stockTrader
         [Test] // everything works
         public void TestGetPriceNormalValues()
         {
+            
         }
 
         [Test] // readFromURL threw an exception

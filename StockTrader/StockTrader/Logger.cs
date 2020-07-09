@@ -1,9 +1,10 @@
+using stock_trader_app_DI_csharp.StockTrader;
 using System;
 using System.IO;
 
 namespace stockTrader
 {
-    public class Logger
+    public class Logger : ILogger
     {
 
         private static Logger _instance;

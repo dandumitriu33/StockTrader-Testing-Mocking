@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StockTrader\ILogger.cs" />
+    <Compile Include="StockTrader\IRemoteURLReader.cs" />
+    <Compile Include="StockTrader\IStockAPIService.cs" />
+    <Compile Include="StockTrader\ITrader.cs" />
     <Compile Include="StockTrader\Logger.cs" />
+    <Compile Include="StockTrader\MockRemoteURLReader.cs" />
+    <Compile Include="StockTrader\MockStockApiService.cs" />
+    <Compile Include="StockTrader\MockTrader.cs" />
     <Compile Include="StockTrader\RemoteURLReader.cs" />
     <Compile Include="StockTrader\StockAPIService.cs" />
     <Compile Include="StockTrader\Trader.cs" />
