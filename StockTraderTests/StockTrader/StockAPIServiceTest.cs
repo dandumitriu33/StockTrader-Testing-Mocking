@@ -37,22 +37,24 @@ namespace stockTrader
                     .Setup(x => x.ReadFromUrl($"https://financialmodelingprep.com/api/v3/stock/real-time-price/TEST?apikey=demo"))
                     .Throws(new ApplicationException("Error"));
 
-                var cls = mock.Create<StockAPIService>();
-
                 Assert.Throws<ApplicationException>(() => mock.Create<StockAPIService>().GetPrice("TEST"));
-                
-                //var actual = cls.GetPrice("TEST");
-
-                ////Assert.Throws<ApplicationException>(actual);
-                ////Assert.That(() => cls.GetPrice("TEST"), Throws.TypeOf<ApplicationException>());
-                //var ex = Assert.Throws<ApplicationException>(() => cls.GetPrice("TEST"));
-                //Assert.That(ex.Message, Is.EqualTo("Error"));
             }
         }
 
         [Test] // readFromURL returned wrong JSON
         public void TestGetPriceMalformedResponse() 
         {
+            // will change the JSON data to a different field name for price, 
+            // so that the StockAPIService can't read it and consider it null
+            using (var mock = AutoMock.GetLoose())
+            {
+                var mockResponse = "{\n\"symbol\" : \"TEST\",\n\"priceZZZZ\" : 383.08000000,\n\"volume\" : 18086123\n}";
+                mock.Mock<IRemoteURLReader>()
+                    .Setup(x => x.ReadFromUrl($"https://financialmodelingprep.com/api/v3/stock/real-time-price/TEST?apikey=demo"))
+                    .Returns(mockResponse);
+
+                Assert.Throws<NullReferenceException>(() => mock.Create<StockAPIService>().GetPrice("TEST"));
+            }
         }
     }
 }
